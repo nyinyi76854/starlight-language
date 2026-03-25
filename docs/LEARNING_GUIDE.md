@@ -1,6 +1,8 @@
-Welcome to Starlight, a simple and expressive programming language designed for clarity and power.
+# Starlight Language Guide
 
-This guide will walk you through the basics so you can start writing programs quickly.
+Welcome to **Starlight Language**, a simple and expressive server-side scripting programming language designed for clarity and flexibility.
+
+This guide introduces the core concepts and syntax to help you start writing programs quickly.
 
 ---
 
@@ -8,27 +10,29 @@ This guide will walk you through the basics so you can start writing programs qu
 
 ```sl
 sldeploy "Hello, world!"
-````
+```
 
 ---
 
 ## 2. Variables
 
-Use `define` to create variables:
+Variables are declared using the `define` keyword.
 
 ```sl
 define name = "Alice"
 define age = 20
 ```
 
-Variables can store any type:
+### Supported Value Types
 
-```sl
-define x = 10
-define text = "hello"
-define arr = [1, 2, 3]
-define obj = { "a": 1, "b": 2 }
-```
+| Type    | Example              |
+| ------- | -------------------- |
+| Number  | `10`, `3.14`         |
+| String  | `"hello"`            |
+| Boolean | `true`, `false`      |
+| Array   | `[1, 2, 3]`          |
+| Object  | `{ "a": 1, "b": 2 }` |
+| Null    | `null`               |
 
 ---
 
@@ -45,39 +49,26 @@ sldeploy age
 
 ## 4. Input
 
-Use `ask` to get user input:
+Use `ask` to read user input:
 
 ```sl
-define name = ask("Enter your name:");
+define name = ask("Enter your name:")
 sldeploy "Hello " + name
 ```
 
 ---
 
-## 5. Data Types
+## 5. Operators
 
-Starlight supports:
+### Arithmetic Operators
 
-* Numbers → `10`, `3.14`
-* Strings → `"hello"`
-* Booleans → `true`, `false`
-* Arrays → `[1, 2, 3]`
-* Objects → `{ "key": "value" }`
-* Null → `null`
-
----
-
-## 6. Operators
-
-### Arithmetic
-
-```sl
-+   addition
--   subtraction
-*   multiplication
-/   division
-%   modulus
-```
+| Operator | Description    |
+| -------- | -------------- |
+| `+`      | Addition       |
+| `-`      | Subtraction    |
+| `*`      | Multiplication |
+| `/`      | Division       |
+| `%`      | Modulus        |
 
 Example:
 
@@ -87,26 +78,26 @@ define result = 10 + 5 * 2
 
 ---
 
-### Comparison
+### Comparison Operators
 
-```sl
-==   equal
-!=   not equal
-<    less than
-<=   less than or equal
->    greater than
->=   greater than or equal
-```
+| Operator | Description           |
+| -------- | --------------------- |
+| `==`     | Equal                 |
+| `!=`     | Not equal             |
+| `<`      | Less than             |
+| `<=`     | Less than or equal    |
+| `>`      | Greater than          |
+| `>=`     | Greater than or equal |
 
 ---
 
-### Logical
+### Logical Operators
 
-```sl
-AND
-OR
-??
-```
+| Operator | Description     |
+| -------- | --------------- |
+| `AND`    | Logical AND     |
+| `OR`     | Logical OR      |
+| `??`     | Null coalescing |
 
 Example:
 
@@ -116,7 +107,7 @@ define x = null ?? 10
 
 ---
 
-## 7. If Statements
+## 6. Conditional Statements
 
 ```sl
 if (age > 18) {
@@ -128,7 +119,7 @@ if (age > 18) {
 
 ---
 
-## 8. Loops
+## 7. Loops
 
 ### While Loop
 
@@ -165,7 +156,7 @@ for x in arr {
 
 ---
 
-## 9. Functions
+## 8. Functions
 
 ### Function Declaration
 
@@ -175,7 +166,7 @@ func add(a, b) {
 }
 ```
 
-### Calling a Function
+### Function Usage
 
 ```sl
 define result = add(2, 3)
@@ -192,7 +183,7 @@ define add = (a, b) => a + b
 
 ---
 
-## 10. Arrays
+## 9. Arrays
 
 ```sl
 define arr = [1, 2, 3]
@@ -200,7 +191,12 @@ define arr = [1, 2, 3]
 sldeploy arr[0]
 ```
 
-Common operations:
+### Common Array Operations
+
+| Function | Description         |
+| -------- | ------------------- |
+| `push`   | Add element         |
+| `pop`    | Remove last element |
 
 ```sl
 push(arr, 4)
@@ -209,7 +205,7 @@ pop(arr)
 
 ---
 
-## 11. Objects
+## 10. Objects
 
 ```sl
 define user = {
@@ -222,18 +218,25 @@ sldeploy user.name
 
 ---
 
-## 12. Slicing
+## 11. Slicing
 
 ```sl
 define arr = [1, 2, 3, 4, 5]
 
-sldeploy arr[1:4]     # [2, 3, 4]
-sldeploy arr[0:5:2]   # [1, 3, 5]
+sldeploy arr[1:4]
+sldeploy arr[0:5:2]
 ```
+
+### Slice Syntax
+
+| Format             | Description        |
+| ------------------ | ------------------ |
+| `[start:end]`      | Basic slicing      |
+| `[start:end:step]` | Step-based slicing |
 
 ---
 
-## 13. Error Handling
+## 12. Error Handling
 
 ```sl
 do {
@@ -245,42 +248,43 @@ do {
 
 ---
 
-## 14. Imports
+## 13. Imports
 
 ```sl
 import math from "math"
 ```
 
-You can import:
+### Supported Imports
 
-* Other `.sl` files
-* Node.js modules
+| Type            | Description           |
+| --------------- | --------------------- |
+| `.sl` files     | Local modules         |
+| Node.js modules | External dependencies |
 
 ---
 
-## 15. Built-in Functions
+## 14. Built-in Functions
 
 Examples:
 
 ```sl
-len([1,2,3])          # 3
-upper("hello")        # "HELLO"
-random(1, 10)         # random number
+len([1,2,3])
+upper("hello")
+random(1, 10)
 ```
 
-There are many built-ins for:
+### Categories
 
-* Strings
-* Arrays
-* Math
-* Files
-* Networking
+| Category | Examples         |
+| -------- | ---------------- |
+| String   | `upper`, `lower` |
+| Array    | `push`, `pop`    |
+| Math     | `random`         |
+| Utility  | `len`            |
 
 ---
 
-## 16. Asynchronous Code
-
-You can use `await`:
+## 15. Asynchronous Code
 
 ```sl
 define data = await get("https://api.example.com")
@@ -289,7 +293,7 @@ sldeploy data
 
 ---
 
-## 17. Creating Objects with new
+## 16. Object Construction
 
 ```sl
 func Person(name) {
@@ -302,7 +306,7 @@ sldeploy p.name
 
 ---
 
-## 18. Comments
+## 17. Comments
 
 ```sl
 # This is a comment
@@ -310,20 +314,26 @@ sldeploy p.name
 
 ---
 
-## 19. Tips
+## 18. Language Notes
 
-* Undefined values are treated as `null`
-* Functions return `null` if nothing is returned
-* Arrays and objects are dynamic
-* Errors show line and column with suggestions
+| Behavior         | Description                       |
+| ---------------- | --------------------------------- |
+| Undefined values | Treated as `null`                 |
+| Function return  | Defaults to `null` if unspecified |
+| Data structures  | Dynamic (arrays and objects)      |
+| Error reporting  | Includes line and column details  |
 
 ---
 
-## Next Steps
+## 19. Next Steps
 
 * Explore built-in functions
-* Try writing small programs
-* Read the syntax reference for full details
+* Write small programs
+* Review full syntax reference
+* Experiment with custom scripts
 
-```
+---
 
+## Keywords
+
+starlight language, scripting language, programming language tutorial, interpreter language, CLI scripting, custom language design
