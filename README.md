@@ -1,177 +1,187 @@
-#   Starlight Programming Language
+# Starlight Language (starlight-language)
 
-Starlight is a lightweight **server-side scripting language** with its own CLI runtime.
-It allows you to execute `.sl` script files directly from the command line.
+**Starlight Language** is a lightweight server-side scripting programming language built with JavaScript. It provides a custom interpreter and command-line interface (CLI) runtime for executing `.sl` scripts.
+
+This project is designed for learning, experimentation, and understanding how programming languages and interpreters work internally.
 
 ---
 
-##   Usage
+## Overview
 
-Run a Starlight script using:
+Starlight Language is focused on simplicity and clarity. It demonstrates the full pipeline of a programming language, from lexical analysis to execution.
+
+| Feature           | Description                                  |
+| ----------------- | -------------------------------------------- |
+| Type              | Server-side scripting language               |
+| Runtime           | CLI-based                                    |
+| Implementation    | JavaScript (Node.js)                         |
+| Execution Model   | Interpreted (Lexer → Parser → Evaluator)     |
+| Primary Use Cases | Learning, backend scripting, experimentation |
+
+---
+
+## Quick Start
+
+Run a Starlight script:
 
 ```bash
 starlight file.sl
 ```
 
-This command will:
+Or using Node.js directly:
 
-1. Read the `.sl` source file
-2. Tokenize it using the lexer
-3. Parse it into an AST
-4. Execute it using the evaluator
+```bash
+node starlight.js file.sl
+```
 
 ---
 
-## 📦 Project Structure
+## Example
+
+```sl
+print("Hello, Starlight")
+```
+
+---
+
+## Execution Pipeline
+
+The Starlight interpreter follows a structured execution pipeline:
+
+| Stage      | File           | Description                          |
+| ---------- | -------------- | ------------------------------------ |
+| Input      | `.sl` file     | Source code                          |
+| Lexing     | `lexer.js`     | Converts source code into tokens     |
+| Parsing    | `parser.js`    | Builds an Abstract Syntax Tree (AST) |
+| Evaluation | `evaluator.js` | Executes the AST                     |
+| Output     | —              | Final program result                 |
+
+---
+
+## Project Structure
 
 ```plaintext
-starlight/
-├── lexer.js        # Tokenizes source code into tokens
-├── parser.js       # Converts tokens into an AST
-├── evaluator.js    # Executes the AST
-├── starlight.js    # CLI entry point
+starlight-language/
+├── lexer.js
+├── parser.js
+├── evaluator.js
+├── starlight.js
 └── README.md
 ```
 
 ---
 
-##   Core Components
+## Core Components
 
-### `lexer.js`
+### Lexer (`lexer.js`)
 
-Breaks raw `.sl` source code into tokens.
-
-* Recognizes keywords, operators, identifiers, literals
-* Outputs a structured token stream
-
-  **Source Code → Tokens**
-
----
-
-### `parser.js`
-
-Transforms tokens into an Abstract Syntax Tree (AST).
-
-* Ensures correct syntax
-* Builds hierarchical program structure
-
-  **Tokens → AST**
+| Responsibility | Details                                    |
+| -------------- | ------------------------------------------ |
+| Tokenization   | Converts source code into tokens           |
+| Recognizes     | Keywords, operators, identifiers, literals |
+| Output         | Token stream                               |
 
 ---
 
-### `evaluator.js`
+### Parser (`parser.js`)
 
-Executes the AST.
-
-* Interprets expressions and statements
-* Handles runtime behavior
-
-  **AST → Output**
-
----
-
-### `starlight.js`
-
-The main CLI runtime.
-
-* Handles command-line input (`starlight file.sl`)
-* Reads file content
-* Connects lexer → parser → evaluator
+| Responsibility  | Details                     |
+| --------------- | --------------------------- |
+| Syntax Analysis | Validates program structure |
+| Transformation  | Converts tokens into AST    |
+| Output          | Abstract Syntax Tree        |
 
 ---
 
-##   Execution Pipeline
+### Evaluator (`evaluator.js`)
 
-```plaintext
-file.sl
-   ↓
-lexer.js
-   ↓
-parser.js
-   ↓
-evaluator.js
-   ↓
-Output
-```
+| Responsibility   | Details                            |
+| ---------------- | ---------------------------------- |
+| Execution        | Interprets AST nodes               |
+| Runtime Behavior | Handles expressions and statements |
+| Output           | Program result                     |
 
 ---
 
-##  Server-Side Language
+### CLI Runtime (`starlight.js`)
 
-Starlight is designed to run **on the server / command line**, not in the browser.
-
-It can be used for:
-
-* Backend scripting
-* Automation
-* Learning how interpreters work
+| Responsibility | Details                               |
+| -------------- | ------------------------------------- |
+| Entry Point    | Handles CLI execution                 |
+| File Handling  | Reads `.sl` files                     |
+| Integration    | Connects lexer, parser, and evaluator |
 
 ---
 
-##  Running the CLI
+## Use Cases
 
-If installed globally:
+Starlight Language is suitable for:
 
-```bash
-starlight program.sl
-```
-
-Or using Node.js directly:
-
-```bash
-node starlight.js program.sl
-```
+| Use Case          | Description                            |
+| ----------------- | -------------------------------------- |
+| Learning          | Understanding interpreter architecture |
+| Backend Scripting | Running command-line scripts           |
+| Experimentation   | Testing language design concepts       |
 
 ---
 
-##  Example
+## Project Goals
 
-```plaintext
-hello.sl
-```
-
-Run:
-
-```bash
-starlight hello.sl
-```
-
----
-
-##  Project Goals
-
-* Build a simple but functional scripting language
+* Build a simple and understandable programming language
 * Demonstrate interpreter architecture
-* Provide a foundation for future language features
+* Provide a foundation for extending language features
 
 ---
 
-##  Future Improvements
+## Future Improvements
 
-* Variables and functions
-* Control flow (if, loops)
-* Error handling
-* Standard library
-* Package system
+| Feature          | Status      |
+| ---------------- | ----------- |
+| Variables        | Planned     |
+| Functions        | Planned     |
+| Control Flow     | In Progress |
+| Error Handling   | Planned     |
+| Standard Library | Planned     |
+| Package System   | Planned     |
 
 ---
 
-##  Concepts Covered
+## Concepts Covered
 
+* Programming language design
 * Lexical analysis (tokenization)
-* Parsing (AST generation)
-* Interpretation (execution)
-* CLI tool design
+* Parsing and Abstract Syntax Trees (AST)
+* Interpretation and execution
+* CLI tool development
 
 ---
 
-##  Contribution
+## Keywords
 
-Contributions and ideas are welcome.
-Feel free to fork and extend the language.
+Starlight Language is associated with the following topics:
+
+* programming language
+* scripting language
+* interpreter
+* compiler design
+* abstract syntax tree
+* lexer
+* parser
+* language development
+* CLI runtime
 
 ---
 
-##  License
+## Contributing
 
-Open-source for educational and experimental use.
+Contributions are welcome. You can:
+
+* Fork the repository
+* Submit improvements
+* Propose new features
+
+---
+
+## License
+
+This project is open-source and intended for educational and experimental use.
