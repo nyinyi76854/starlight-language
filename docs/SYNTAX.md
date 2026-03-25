@@ -1,17 +1,17 @@
-# Starlight Syntax Reference
+# Starlight Language Syntax Reference
 
-This document provides a detailed reference for Starlight language syntax, including all statements, operators, expressions, and important edge cases.
+This document provides a comprehensive reference for **Starlight Language syntax**, including statements, expressions, operators, and edge-case behavior. It is intended as a formal guide for developers and learners.
 
 ---
 
 ## 1. Program Structure
 
-A Starlight program is a sequence of statements:
+A Starlight program consists of a sequence of executable statements.
 
 ```sl
 define x = 10
 sldeploy x
-````
+```
 
 ---
 
@@ -23,10 +23,10 @@ sldeploy x
 define name = "Alice"
 ```
 
-Rules:
-
-* Initializer is required
-* Variables are dynamically typed
+| Rule           | Description |
+| -------------- | ----------- |
+| Initialization | Required    |
+| Typing         | Dynamic     |
 
 ---
 
@@ -36,15 +36,15 @@ Rules:
 x = 20
 ```
 
-Supports:
+#### Compound Assignment Operators
 
-```sl
-x += 5
-x -= 2
-x *= 3
-x /= 2
-x %= 2
-```
+| Operator | Description               |
+| -------- | ------------------------- |
+| `+=`     | Addition assignment       |
+| `-=`     | Subtraction assignment    |
+| `*=`     | Multiplication assignment |
+| `/=`     | Division assignment       |
+| `%=`     | Modulus assignment        |
 
 ---
 
@@ -54,17 +54,21 @@ x %= 2
 sldeploy value
 ```
 
-Prints formatted output.
+| Behavior | Description            |
+| -------- | ---------------------- |
+| Output   | Prints formatted value |
 
 ---
 
 ### 2.4 Input
 
 ```sl
-define input = ask("Enter value:");
+define input = ask("Enter value:")
 ```
 
-* Prompt must be a string
+| Rule        | Description      |
+| ----------- | ---------------- |
+| Prompt type | Must be a string |
 
 ---
 
@@ -78,7 +82,9 @@ if (condition) {
 }
 ```
 
-* Condition is coerced to boolean
+| Rule      | Description        |
+| --------- | ------------------ |
+| Condition | Coerced to boolean |
 
 ---
 
@@ -110,19 +116,24 @@ for item in array {
 }
 ```
 
-* Iterates arrays and objects
-* For objects, iterates keys
+| Behavior | Description     |
+| -------- | --------------- |
+| Arrays   | Iterates values |
+| Objects  | Iterates keys   |
 
 ---
 
-### 2.9 Break and Continue
+### 2.9 Loop Control
 
 ```sl
 break
 continue
 ```
 
-* Only valid inside loops
+| Statement  | Description            |
+| ---------- | ---------------------- |
+| `break`    | Exit loop              |
+| `continue` | Skip to next iteration |
 
 ---
 
@@ -136,13 +147,11 @@ func add(a, b) {
 }
 ```
 
-#### Return
+#### Return Behavior
 
-```sl
-return value
-```
-
-* If omitted, returns `null`
+| Rule           | Description       |
+| -------------- | ----------------- |
+| Default return | `null` if omitted |
 
 ---
 
@@ -152,7 +161,7 @@ return value
 define add = (a, b) => a + b
 ```
 
-Block form:
+#### Block Form
 
 ```sl
 define fn = (x) => {
@@ -170,11 +179,11 @@ import { add } from "utils"
 import * as lib from "module"
 ```
 
-Supports:
-
-* Default import
-* Named import
-* Namespace import
+| Import Type | Description          |
+| ----------- | -------------------- |
+| Default     | Single module import |
+| Named       | Specific exports     |
+| Namespace   | Entire module        |
 
 ---
 
@@ -188,8 +197,10 @@ do {
 }
 ```
 
-* `track` runs if an error occurs
-* Error available as `error`
+| Feature        | Description           |
+| -------------- | --------------------- |
+| `track` block  | Executes on error     |
+| Error variable | Accessible as `error` |
 
 ---
 
@@ -206,7 +217,9 @@ start (value) {
 }
 ```
 
-* Falls through unless `break` is used
+| Behavior    | Description                |
+| ----------- | -------------------------- |
+| Fallthrough | Occurs unless `break` used |
 
 ---
 
@@ -218,7 +231,7 @@ define result = await asyncCall()
 
 ---
 
-### 2.16 New Expression
+### 2.16 Object Construction
 
 ```sl
 define obj = new Constructor(arg)
@@ -228,7 +241,7 @@ define obj = new Constructor(arg)
 
 ## 3. Expressions
 
-### 3.1 Literals
+### 3.1 Literal Values
 
 ```sl
 10
@@ -240,82 +253,22 @@ null
 
 ---
 
-### 3.2 Identifiers
+### 3.2 Expression Types
 
-```sl
-x
-myVariable
-```
-
----
-
-### 3.3 Binary Expressions
-
-```sl
-a + b
-a - b
-a * b
-a / b
-a % b
-```
+| Type               | Example        |
+| ------------------ | -------------- |
+| Identifier         | `x`            |
+| Binary Expression  | `a + b`        |
+| Logical Expression | `a AND b`      |
+| Unary Expression   | `!x`, `-x`     |
+| Conditional        | `cond ? a : b` |
+| Function Call      | `fn()`         |
+| Member Access      | `obj.key`      |
+| Index Access       | `arr[0]`       |
 
 ---
 
-### 3.4 Logical Expressions
-
-```sl
-a AND b
-a OR b
-a ?? b
-```
-
-* `??` returns right side if left is null or undefined
-
----
-
-### 3.5 Unary Expressions
-
-```sl
-!x
--x
-+x
-```
-
----
-
-### 3.6 Conditional Expression
-
-```sl
-condition ? value1 : value2
-```
-
----
-
-### 3.7 Function Calls
-
-```sl
-add(1, 2)
-```
-
----
-
-### 3.8 Member Access
-
-```sl
-obj.key
-```
-
----
-
-### 3.9 Index Access
-
-```sl
-arr[0]
-```
-
----
-
-### 3.10 Arrays
+### 3.3 Arrays
 
 ```sl
 [1, 2, 3]
@@ -323,7 +276,7 @@ arr[0]
 
 ---
 
-### 3.11 Objects
+### 3.4 Objects
 
 ```sl
 {
@@ -334,23 +287,21 @@ arr[0]
 
 ---
 
-### 3.12 Slice Expression
+### 3.5 Slice Expression
 
 ```sl
 arr[start:end]
 arr[start:end:step]
 ```
 
-Examples:
-
-```sl
-arr[1:4]
-arr[0:5:2]
-```
+| Format             | Description     |
+| ------------------ | --------------- |
+| `[start:end]`      | Basic slice     |
+| `[start:end:step]` | Slice with step |
 
 ---
 
-### 3.13 Update Expressions
+### 3.6 Update Expressions
 
 ```sl
 i++
@@ -363,180 +314,59 @@ i--
 
 ## 4. Operators
 
-### Arithmetic
+### Operator Categories
 
-```sl
-+  -  *  /  %
-```
-
----
-
-### Assignment
-
-```sl
-=  +=  -=  *=  /=  %=
-```
-
----
-
-### Comparison
-
-```sl
-==  !=  <  <=  >  >=
-```
-
----
-
-### Logical
-
-```sl
-AND  OR  ??
-```
-
----
-
-### Unary
-
-```sl
-!  +  -
-```
+| Category   | Operators                         |
+| ---------- | --------------------------------- |
+| Arithmetic | `+`, `-`, `*`, `/`, `%`           |
+| Assignment | `=`, `+=`, `-=`, `*=`, `/=`, `%=` |
+| Comparison | `==`, `!=`, `<`, `<=`, `>`, `>=`  |
+| Logical    | `AND`, `OR`, `??`                 |
+| Unary      | `!`, `+`, `-`                     |
 
 ---
 
 ## 5. Edge Cases
 
-### 5.1 Undefined Variables
+### Runtime Behavior
 
-```sl
-x
-```
-
-Throws runtime error:
-
-```
-Undefined variable: "x"
-```
-
-Includes suggestion if similar variable exists.
-
----
-
-### 5.2 Division by Zero
-
-```sl
-10 / 0
-```
-
-Throws:
-
-```
-Division by zero
-```
+| Case                      | Behavior / Result    |
+| ------------------------- | -------------------- |
+| Undefined variable        | Runtime error        |
+| Division by zero          | Runtime error        |
+| Invalid assignment        | Syntax/runtime error |
+| Function without return   | Returns `null`       |
+| Array out-of-bounds       | Returns `undefined`  |
+| Missing object property   | Returns `undefined`  |
+| Call non-function         | Runtime error        |
+| Member access on `null`   | Runtime error        |
+| Loop control outside loop | Runtime error        |
+| Import failure            | Runtime error        |
 
 ---
 
-### 5.3 Invalid Assignment
+### Slice Rules
 
-```sl
-(1 + 2) = 3
-```
-
-Throws error.
-
----
-
-### 5.4 Null and Undefined
-
-* Undefined is internally converted to `null`
-* Functions return `null` by default
+| Rule                | Behavior       |
+| ------------------- | -------------- |
+| Negative indices    | Supported      |
+| Out-of-range values | Clamped        |
+| Step value          | Cannot be zero |
 
 ---
 
-### 5.5 Array Bounds
+## 6. Language Notes
 
-```sl
-arr[100]
-```
-
-Returns:
-
-```
-undefined
-```
+| Feature            | Description                          |
+| ------------------ | ------------------------------------ |
+| Typing             | Dynamic                              |
+| Data structures    | Mutable (arrays and objects)         |
+| Functions          | Support closures                     |
+| Undefined handling | Converted to `null` internally       |
+| Error reporting    | Includes line and column information |
 
 ---
 
-### 5.6 Object Access
+## Keywords
 
-```sl
-obj.missing
-```
-
-Returns:
-
-```
-undefined
-```
-
----
-
-### 5.7 Slice Behavior
-
-* Negative indices are supported
-* Out-of-range values are clamped
-* Step cannot be zero
-
----
-
-### 5.8 Function Calls
-
-Calling non-function:
-
-```sl
-x()
-```
-
-Throws:
-
-```
-Call to non-function
-```
-
----
-
-### 5.9 Member Access on Null
-
-```sl
-null.x
-```
-
-Throws runtime error.
-
----
-
-### 5.10 Loop Control Outside Loop
-
-```sl
-break
-```
-
-Throws error.
-
----
-
-### 5.11 Import Errors
-
-* Missing module → error
-* Missing export → error
-
----
-
-## 6. Notes
-
-* All operations are dynamically typed
-* Objects and arrays are mutable
-* Functions capture their environment (closures)
-* Errors include line and column information
-
-```
-
+starlight language syntax, scripting language reference, interpreter syntax, programming language grammar, AST interpreter language
