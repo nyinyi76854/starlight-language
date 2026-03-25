@@ -16,21 +16,21 @@ Check versions:
 node -v
 npm -v
 
-```id="c1x7lm"
+```
 
 ---
 
 # Install Starlight CLI
 
-Install globally using npm:
+Run the following command:
 
 ```
 
 npm install -g starlight-cli
 
-```id="q9n3vb"
+```
 
-This command installs Starlight CLI globally so you can run `starlight` from anywhere.
+This installs Starlight globally so the `starlight` command works anywhere on your system.
 
 ---
 
@@ -42,7 +42,7 @@ After installing, run:
 
 starlight -v
 
-```id="t5y8hk"
+```
 
 You should see the CLI version printed in the terminal.
 
@@ -56,7 +56,7 @@ Run a Starlight file:
 
 starlight app.sl
 
-```id="z6r2dp"
+```
 
 ---
 
@@ -69,7 +69,7 @@ Create a file named `hello.sl`:
 define name = "World"
 sldeploy("Hello " + name)
 
-```id="p4w8nx"
+```
 
 Run it:
 
@@ -77,7 +77,7 @@ Run it:
 
 starlight hello.sl
 
-```id="h7m1qa"
+```
 
 ---
 
@@ -89,15 +89,15 @@ Start the interactive editor:
 
 starlight --writedirectly
 
-```id="n3c8ut"
+```
 
-Type code line by line, then run:
+Then type your code and run:
 
 ```
 
 :run
 
-```id="x8d2sa"
+```
 
 ---
 
@@ -107,33 +107,27 @@ Type code line by line, then run:
 
 starlight --learn
 
-```id="v2p9kd"
-
-This opens the official learning guide in your browser.
+```
 
 ---
 
 # Updating
 
-Update to the latest version:
-
 ```
 
 npm update -g starlight-cli
 
-```id="j5u4rw"
+```
 
 ---
 
 # Uninstall
 
-Remove globally:
-
 ```
 
 npm uninstall -g starlight-cli
 
-```id="m1s7qe"
+```
 
 ---
 
@@ -143,36 +137,54 @@ npm uninstall -g starlight-cli
 
 If `starlight` is not recognized:
 
-- Make sure npm global bin is in your PATH
+- Ensure npm global bin is in your PATH
 - Restart your terminal
 
-Check npm global path:
+Check path:
 
 ```
 
 npm config get prefix
 
-```id="f3b6zn"
+```
 
 ---
 
-## Permission Errors (Linux / macOS)
+## Permission Errors
 
-Try:
+If you encounter permission issues, avoid using elevated privileges.
+
+Instead, configure npm to use a user-level directory:
 
 ```
 
-sudo npm install -g starlight-cli
+npm config set prefix ~/.npm-global
 
-```id="r9k2vp"
+```
+
+Then add it to your PATH:
+
+```
+
+export PATH=~/.npm-global/bin:$PATH
+
+```
+
+Restart your terminal and reinstall:
+
+```
+
+npm install -g starlight-cli
+
+```
 
 ---
 
 # Notes
 
-- `.sl` files are executable via the CLI
-- `.md` files open in a rendered HTML viewer
-- The CLI works cross-platform (Windows, macOS, Linux)
+- `.sl` files run via CLI
+- `.md` files open as rendered HTML
+- Works on Windows, macOS, and Linux
 
 
 # End of Installation Guide
